@@ -1,7 +1,7 @@
 # This references the default Python container from
 # the Docker Hub with the 3.7-slim tag
 box: 
-    id: python:3.7-slim
+    id: ahz001/custom_python
     ports: 
         - "5000"
 
