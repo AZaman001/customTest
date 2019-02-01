@@ -1,9 +1,16 @@
 # This references the default Python container from
 # the Docker Hub with the 3.7-slim tag
 box: 
-    id: python:3.7-slim
+    id: python:2.7-slim
     ports: 
         - "5000"
+
+dev:
+  steps:
+    - pip-install
+    - internal/watch:
+        code: python flaskTest.py
+        reload: true
 
 # This is the build pipeline. Pipelines are the core of wercker
 # Read more about pipelines on our dev center
@@ -25,6 +32,5 @@ build:
     - script:
         name: python flask app
         code: |
-          export FLASK_APP=flaskTest.py
-          flask run
+          python flaskTest.py
           
