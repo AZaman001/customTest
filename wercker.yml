@@ -8,6 +8,12 @@ build:
   # The steps that will be executed on build
   # Steps make up the actions in your pipeline
   steps:
+
+     # A step that executes `pip install` command.
+    - pip-install:
+        requirements_file: ""
+        packages_list: "virtualenv"
+        
     # A step that sets up the python virtual environment
     - virtualenv:
         name: setup virtual environment
