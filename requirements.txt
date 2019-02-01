@@ -1,2 +1,5 @@
 Flask
 requests
+Werkzeug==0.8.3
+distribute==0.6.34
+wsgiref==0.1.2
