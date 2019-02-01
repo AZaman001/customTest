@@ -2,34 +2,14 @@
 # the Docker Hub with the 3.7-slim tag
 box: 
     id: python:3.7-slim
+    ports:
+    - "5000"
 
-# This is the build pipeline. Pipelines are the core of wercker
-build:
-  # The steps that will be executed on build
-  # Steps make up the actions in your pipeline
+dev:
   steps:
-
-     # A step that executes `pip install` command.
-    - pip-install:
-        requirements_file: ""
-        packages_list: "virtualenv"
-        
-    # A step that sets up the python virtual environment
-    - virtualenv:
-        name: setup virtual environment
-        install_wheel: false # Enable wheel to speed up builds (experimental)
-
-    # A step that executes `pip install` command.
     - pip-install
+    - internal/watch:
+        code: python flaskTest.py
+        reload: true
 
-    # # This pip-install clears the local wheel cache
-    # - pip-install:
-    #     clean_wheel_dir: true
-
-    # A custom script step, name value is used in the UI
-    # and the code value contains the command that get executed
-    - script:
-        name: python flask app
-        code: |
-          python3 flaskTest.py
           
