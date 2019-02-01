@@ -32,5 +32,6 @@ build:
     - script:
         name: python flask app
         code: |
+          export FLASK_ENV=development
           python flaskTest.py
           
