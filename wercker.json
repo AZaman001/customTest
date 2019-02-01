@@ -1,9 +1,0 @@
-{
-    "custom steps" : {
-        "flask test" : {
-          "commands" : [
-            "python flaskTest.py"
-            ]
-        }
-    }
-}
