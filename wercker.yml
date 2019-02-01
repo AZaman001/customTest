@@ -13,9 +13,6 @@ build:
   # Steps make up the actions in your pipeline
   
   steps:
-    - virtualenv:
-        name: My virtualenv
-        install_wheel: false
     # A step that executes `pip install` command.
     - pip-install
 
@@ -28,5 +25,6 @@ build:
     - script:
         name: python flask app
         code: |
-          python flaskTest.py
+          export FLASK_APP=flaskTest.py
+          flask run
           
