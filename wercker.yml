@@ -5,7 +5,7 @@ box:
     ports:
     - "5000"
 
-build:
+dev:
   steps:
     - pip-install
     - internal/watch:
