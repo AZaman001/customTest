@@ -13,6 +13,9 @@ build:
   # Steps make up the actions in your pipeline
   
   steps:
+    - virtualenv:
+        name: My virtualenv
+        install_wheel: false
     # A step that executes `pip install` command.
     - pip-install
 
