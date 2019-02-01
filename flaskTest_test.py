@@ -5,6 +5,7 @@ import json
 
 class JokesTestCase(unittest.TestCase):
 
+  # I understand that this isnt' a thorough test
   def test_index(self):
     tester = app.test_client(self)
     response = tester.get('/dadjoke', content_type='text/plain')
