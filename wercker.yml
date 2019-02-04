@@ -25,3 +25,17 @@ build:
         name: python unit test
         code: |
           python flaskTest_test.py
+
+
+push-release:
+  steps:
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        repository: $DOCKER_REPO
+        registry: $DOCKER_REGISTRY
+        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+        working-dir: /pipeline/source
+        ports: $PORT
+        env: PORT=$PORT
+        cmd: sh target/bin/start
