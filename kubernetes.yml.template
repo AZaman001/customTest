@@ -1,26 +1,26 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: customTest-v1
+  name: custom-test-v1
   labels:
     commit: ${WERCKER_GIT_COMMIT}
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: customTest
+      app: custom-test
   template:
     metadata:
       labels:
-        app: customTest
+        app: custom-test
         commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
-      - name: customTest
+      - name: custom-test
         image: ${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
         imagePullPolicy: Always
         ports:
-        - name: customTest
+        - name: custom-test
           containerPort: ${PORT}
           protocol: TCP
       imagePullSecrets:
@@ -29,9 +29,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: customTest
+  name: custom-test
   labels:
-    app: customTest
+    app: custom-test
     commit: ${WERCKER_GIT_COMMIT}
 spec:
   ports:
