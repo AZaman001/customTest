@@ -26,7 +26,7 @@ build:
         code: |
           python flaskTest_test.py
 
-# push to OCIR, instead of DockerHub
+# push to OCIR, instead of DockerHub using the correct creds
 push-release:
   steps:
     - internal/docker-push:
