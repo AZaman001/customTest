@@ -39,3 +39,24 @@ push-release:
         ports: $PORT
         env: PORT=$PORT
         cmd: sh target/bin/start
+
+
+#Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
+deploy-to-OKE:
+    box:
+        id: alpine
+        cmd: /bin/sh
+    steps:
+
+    - bash-template
+
+    - script:
+        name: "Visualise Kubernetes config"
+        code: cat kubernetes.yml
+
+    - kubectl:
+        name: deploy to kubernetes
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: apply -f kubernetes.yml
