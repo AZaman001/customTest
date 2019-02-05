@@ -40,5 +40,6 @@ spec:
   - port: 5000
     targetPort: ${PORT}
   selector:
-    app: customTest
+    app: custom-test
   type: ClusterIP
+---
