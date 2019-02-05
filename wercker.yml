@@ -25,7 +25,7 @@ build:
         name: python unit test
         code: |
           python flaskTest_test.py
-          
+
     - internal/docker-build:
       dockerfile: Dockerfile
       image-name: my-new-image
@@ -35,9 +35,7 @@ build:
 # testing some things
 push-release:
   steps:
-
     - internal/docker-push:
-        image-name: my-new-image
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
