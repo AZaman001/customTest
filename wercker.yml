@@ -39,7 +39,7 @@ push-release:
         working-dir: /pipeline/source
         ports: $PORT
         env: PORT=$PORT
-        cmd: export FLASK_APP=flaskTest.py && flask run
+        cmd: python flaskTest.py
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-OKE:
