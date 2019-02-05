@@ -7,6 +7,10 @@ WORKDIR /app
 # Copy all/required files from the current directory contents into the container at /app
 COPY flaskTest.py flaskTest.py
 
+RUN apk update && apk add bash
+
+RUN apk add curl 
+
 # Install any needed packages specified in requirements.txt
 RUN pip3 install Flask && pip3 install requests
 

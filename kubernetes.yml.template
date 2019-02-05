@@ -41,5 +41,5 @@ spec:
     targetPort: ${PORT}
   selector:
     app: custom-test
-  type: ClusterIP
+  type: LoadBalancer
 ---
