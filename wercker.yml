@@ -45,7 +45,7 @@ push-release:
 deploy-to-OKE:
     box:
         id: alpine
-        cmd: /bin/sh -c --
+        cmd: /bin/sh
     steps:
 
     - bash-template
