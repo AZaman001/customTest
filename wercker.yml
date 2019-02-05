@@ -25,7 +25,8 @@ build:
         name: python unit test
         code: |
           python flaskTest_test.py
-
+          
+    # so it has curl 
     - script:
         name: add curl
         code: |
