@@ -58,6 +58,6 @@ deploy-to-OKE:
         name: deploy to kubernetes
         server: $KUBERNETES_MASTER
         username: $KUBERNETES_USERNAME
-        #token: $KUBERNETES_TOKEN
+        token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
         command: apply -f kubernetes.yml
