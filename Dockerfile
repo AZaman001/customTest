@@ -1,5 +1,5 @@
 # check Dockerhub grab the base image you want
-FROM python:3.7-slim
+FROM python:3.7-alpine3.8
 
 # Set the working directory to /app
 WORKDIR /app
