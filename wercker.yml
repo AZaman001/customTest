@@ -25,12 +25,7 @@ build:
         name: python unit test
         code: |
           python flaskTest_test.py
-          
-    # so it has curl 
-    - script:
-        name: add curl
-        code: |
-          apk add curl
+    
 
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
 push-release:
@@ -44,7 +39,13 @@ push-release:
         working-dir: /pipeline/source
         ports: $PORT
         env: PORT=$PORT
-        cmd: sh target/bin/start
+        cmd: sh target/bin/start && apk add curl
+    
+    # so it has curl 
+    - script:
+        name: add curl
+        code: |
+          apk add curl
 
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
