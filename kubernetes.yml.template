@@ -18,8 +18,6 @@ spec:
       containers:
       - name: custom-test
         image: ${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
-        command: [ "/bin/bash", "-c", "--" ]
-        args: [ "while true; do sleep 30; done;" ]
         imagePullPolicy: Always
         ports:
         - name: custom-test
@@ -41,5 +39,5 @@ spec:
     targetPort: ${PORT}
   selector:
     app: custom-test
-  type: LoadBalancer
+  type: ClusterIP
 ---
