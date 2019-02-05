@@ -31,7 +31,12 @@ build:
 # testing some things
 push-release:
   steps:
+    - internal/docker-build:
+      dockerfile: Dockerfile
+      image-name: my-new-image
+
     - internal/docker-push:
+        image-name: my-new-image
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
@@ -46,7 +51,7 @@ push-release:
 deploy-to-OKE:
     box:
         id: alpine
-        cmd: /bin/sh
+        cmd: /bin/sh -c --
     steps:
 
     - bash-template
