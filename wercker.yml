@@ -18,8 +18,7 @@ build:
   steps:
     # A step that executes `pip install` command
     - pip-install
-
-      # A custom script step, name value is used in the UI
+    # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
     - script:
         name: python unit test
@@ -30,10 +29,6 @@ build:
 # testing some things
 push-release:
   steps:
-   - internal/docker-build:
-      dockerfile: Dockerfile
-      image-name: my-new-image
-
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
@@ -43,7 +38,7 @@ push-release:
         working-dir: /pipeline/source
         ports: $PORT
         env: PORT=$PORT
-        cmd: sh python flaskTest.py
+        cmd: sh target/bin/start && python flaskTest.py
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-OKE:
