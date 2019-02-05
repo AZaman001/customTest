@@ -22,15 +22,18 @@ build:
       # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
     - script:
-        name: python build this here
+        name: python unit test
         code: |
-          python flaskTest.py
+          python flaskTest_test.py
     
-
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
 # testing some things
 push-release:
   steps:
+   - internal/docker-build:
+      dockerfile: Dockerfile
+      image-name: my-new-image
+
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
@@ -40,7 +43,7 @@ push-release:
         working-dir: /pipeline/source
         ports: $PORT
         env: PORT=$PORT
-        cmd: python flaskTest.py
+        cmd: sh python flaskTest.py
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-OKE:
