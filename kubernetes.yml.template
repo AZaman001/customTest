@@ -18,6 +18,8 @@ spec:
       containers:
       - name: custom-test
         image: ${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
+        command: [ "/bin/sh", "-c", "--" ]
+        args: ["while true; do sleep 30; done;"]
         imagePullPolicy: Always
         ports:
         - name: custom-test
