@@ -35,7 +35,6 @@ build:
 push-release:
   steps:
     - internal/docker-push:
-        image-name: my-new-image
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
