@@ -2,7 +2,7 @@
 # the Docker Hub with the 3.7-slim tag
 box: 
     id: python:3.7-alpine3.8
-    entrypoint: /bin/bash -c
+    entrypoint: /bin/sh -c
     ports:
     - "5000"
 
@@ -50,7 +50,7 @@ push-release:
 deploy-to-OKE:
     box:
         id: ubuntu
-        cmd: /bin/bash
+        cmd: /bin/sh
     steps:
 
     - bash-template
