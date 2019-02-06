@@ -38,13 +38,13 @@ push-release:
         working-dir: /pipeline/source
         ports: $PORT
         env: PORT=$PORT
-        cmd: sh target/bin/start && python flaskTest.py
+        cmd: python flaskTest.py
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-OKE:
     box:
-        id: alpine
-        cmd: /bin/sh
+        id: ubuntu
+        cmd: /bin/bash
     steps:
 
     - bash-template
