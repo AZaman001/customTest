@@ -1,5 +1,4 @@
 # This references the default Python container from
-# the Docker Hub with the 3.7-slim tag
 box: 
     id: python:3.7-alpine3.8
     ports:
@@ -34,7 +33,7 @@ build:
           "username": $DOCKER_USERNAME,
           "password": $DOCKER_PASSWORD
       }
-    }
+      }
     
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
 # testing some things
