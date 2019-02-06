@@ -2,6 +2,7 @@
 # the Docker Hub with the 3.7-slim tag
 box: 
     id: python:3.7-alpine3.8
+    entrypoint: /bin/bash -c
     ports:
     - "5000"
 
@@ -24,12 +25,17 @@ build:
         name: python unit test
         code: |
           python flaskTest_test.py
+
+    - internal/docker-build:
+      dockerfile: Dockerfile
+      image-name: my-new-image
     
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
 # testing some things
 push-release:
   steps:
     - internal/docker-push:
+        image-name: my-new-image
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
