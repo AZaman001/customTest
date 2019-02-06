@@ -28,12 +28,20 @@ build:
     - internal/docker-build:
       dockerfile: Dockerfile
       image-name: my-new-image
+      registry-auth-config: |
+      {
+        $DOCKER_REGISTRY: {
+          "username": $DOCKER_USERNAME,
+          "password": $DOCKER_PASSWORD
+      }
+    }
     
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
 # testing some things
 push-release:
   steps:
     - internal/docker-push:
+        image-name: my-new-image
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
