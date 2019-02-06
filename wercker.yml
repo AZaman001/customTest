@@ -48,7 +48,7 @@ push-release:
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-OKE:
     box:
-        id: ubuntu
+        id: alpine
         cmd: /bin/sh
     steps:
 
