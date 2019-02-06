@@ -30,9 +30,10 @@ build:
       image-name: my-new-image
       registry-auth-config: |
         {
-          "$DOCKER_REGISTRY": 
+          "$DOCKER_REGISTRY": {
             "username": "$DOCKER_USERNAME",
             "password": "$DOCKER_PASSWORD"
+          }
         }
 
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
