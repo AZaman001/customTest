@@ -37,7 +37,7 @@ push-release:
         tag: ocir
         working-dir: /pipeline/source
         ports: $PORT
-        cmd: python flaskApp.py
+        cmd: python3 flaskApp.py
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-OKE:
