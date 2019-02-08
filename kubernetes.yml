@@ -19,6 +19,8 @@ spec:
        imagePullPolicy: Always
        ports:
        - containerPort: 5000
+       imagePullSecrets:
+        - name: ocirsecret4
 ---
 apiVersion: v1
 kind: Service
