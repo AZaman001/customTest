@@ -29,7 +29,7 @@ build:
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
 push-release:
   steps:
-
+    # step to build image as directed in Dockerfile found in repo
     - internal/docker-build:
         dockerfile: Dockerfile
         image-name: my-new-image
