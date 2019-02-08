@@ -1,7 +1,7 @@
 # This references the default Python container from
 # the Docker Hub with the 3.7-slim tag
 box: 
-    id: python:3.7-alpine3.8
+    id: python:3.7
     ports:
     - "5000"
 
@@ -23,34 +23,22 @@ build:
     - script:
         name: python unit test
         code: |
-          python flaskTest_test.py
-
-    - internal/docker-build:
-      dockerfile: Dockerfile
-      image-name: my-new-image
-      registry-auth-config: |
-        {
-          "$DOCKER_REGISTRY": {
-            "username": "$DOCKER_USERNAME",
-            "password": "$DOCKER_PASSWORD"
-          }
-        }
+          python flaskApp_test.py
 
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
 # testing some things
 push-release:
   steps:
     - internal/docker-push:
-        image-name: my-new-image
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
         registry: $DOCKER_REGISTRY
-        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+        tag: ocir
         working-dir: /pipeline/source
         ports: $PORT
         env: PORT=$PORT
-        cmd: python flaskTest.py
+        cmd: python flaskApp.py
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-OKE:
@@ -68,7 +56,6 @@ deploy-to-OKE:
     - kubectl:
         name: deploy to kubernetes
         server: $KUBERNETES_MASTER
-        #username: $KUBERNETES_USERNAME
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
         command: apply -f kubernetes.yml
