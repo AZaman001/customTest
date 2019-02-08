@@ -32,9 +32,9 @@ build:
 push-release:
   steps:
 
-    - internal/docker-build:
-        dockerfile: Dockerfile
-        image-name: my-new-image
+    #- internal/docker-build:
+    #    dockerfile: Dockerfile
+    #    image-name: my-new-image
 
     - internal/docker-push:
         image-name: my-new-image
