@@ -21,7 +21,7 @@ build:
     - script:
       name: manually install 
       code: |
-        pip3 install --upgrade --force-reinstall
+        pip3 install -r requirements.txt --upgrade --force-reinstall
 
     - pip-install 
 
