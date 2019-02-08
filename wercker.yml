@@ -17,12 +17,13 @@ build:
   # The steps that will be executed on build
   steps:
     # A step that executes `pip install` command
-    - pip-install 
 
     - script:
-        name: manually install 
-        code: |
-          pip3 install Flask && pip3 install requests
+      name: manually install 
+      code: |
+        pip3 install --upgrade --force-reinstall
+
+    - pip-install 
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
