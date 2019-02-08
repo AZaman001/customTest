@@ -29,7 +29,6 @@ build:
     
 
 # push to OCIR, instead of DockerHub using the correct creds to an existing repo!
-# testing some things
 push-release:
   steps:
 
