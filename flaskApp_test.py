@@ -1,4 +1,4 @@
-from flaskTest import app
+from flaskApp import app
 
 import unittest
 import json
