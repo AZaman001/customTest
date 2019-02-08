@@ -19,9 +19,14 @@ build:
     # A step that executes `pip install` command
 
     - script:
+      name: manually uninstall 
+      code: |
+        pip3 uninstall -r requirements.txt 
+
+    - script:
       name: manually install 
       code: |
-        pip3 install -r requirements.txt --upgrade --force-reinstall
+        pip3 install -r requirements.txt --upgrade 
 
     - pip-install 
 
