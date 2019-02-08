@@ -17,10 +17,16 @@ build:
   # The steps that will be executed on build
   steps:
     # A step that executes `pip install` command
-
-    - pip-install:
-        requirements_file: "requirements.txt"
-
+    - script:
+      name: manual uninstall  
+      code: |
+          pip3 uninstall Flask && pip3 install requests
+    
+    - script:
+      name: manual install 
+      code: |
+          pip3 install Flask && pip3 install requests
+    
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
 
