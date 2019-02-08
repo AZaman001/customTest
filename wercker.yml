@@ -18,7 +18,8 @@ build:
   steps:
     # A step that executes `pip install` command
 
-    - pip-install 
+    - pip-install:
+        requirements_file: "requirements.txt"
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
@@ -45,7 +46,7 @@ push-release:
         tag: ocir
         working-dir: /pipeline/source
         ports: $PORT
-        cmd: pip3 install -r requirements.txt --upgrade && python3 flaskApp.py
+        cmd: python3 flaskApp.py
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-OKE:
