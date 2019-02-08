@@ -33,10 +33,10 @@ build:
 push-release:
   steps:
 
-     - internal/docker-build:
+    - internal/docker-build:
         dockerfile: Dockerfile
         image-name: my-new-image
-        
+
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
