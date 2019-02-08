@@ -19,7 +19,7 @@ build:
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
     - pip-install 
-
+    
     - script:
         name: python unit test
         code: |
@@ -35,6 +35,7 @@ push-release:
         image-name: my-new-image
 
     - internal/docker-push:
+        image-name: my-new-image
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
