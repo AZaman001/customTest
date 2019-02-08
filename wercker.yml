@@ -17,11 +17,8 @@ build:
   # The steps that will be executed on build
   steps:
     # A step that executes `pip install` command
-    #- pip-install 
-    - script:
-        name: pip install manually 
-        code: |
-          pip3 install Flask && pip3 install requests
+    - pip-install 
+
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
 
@@ -35,6 +32,11 @@ build:
 # testing some things
 push-release:
   steps:
+
+     - internal/docker-build:
+        dockerfile: Dockerfile
+        image-name: my-new-image
+        
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
